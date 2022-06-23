@@ -19,8 +19,9 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: azuredeploy.json
-          parameters: storageAccountType=Standard_LRS
+          package: .
 
         # output containerName variable from template
-      - run: echo ${{ steps.deploy.outputs.containerName }}
+      - run: unzip release.zip
+      
+      
