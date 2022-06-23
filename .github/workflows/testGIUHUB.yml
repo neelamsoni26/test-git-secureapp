@@ -14,8 +14,11 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
         # Deploy ARM template
-      - name: Run ARM deploy
-        uses: azure/arm-deploy@v1
+  
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+      - name: unzip artifact for deployment
+        
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
