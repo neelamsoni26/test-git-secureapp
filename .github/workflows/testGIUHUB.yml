@@ -1,6 +1,6 @@
 on: [push]
-name: Azure ARM
-jobs:
+  name: Azure ARM
+  jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
@@ -14,17 +14,13 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
         # Deploy ARM template
-  
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-      - name: unzip artifact for deployment
-        
+      - name: Run ARM deploy
+        uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          package: .
+          template: azuredeploy.json
+          parameters: storageAccountType=Standard_LRS
 
         # output containerName variable from template
-      - run: unzip release.zip
-      
-      
+      - run: echo ${{ steps.deploy.outputs.containerName }}
