@@ -52,6 +52,6 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          app-name: 'AZRAEBLUEUATAPP'
+          app-name: 'test-github-Appservice'
           slot-name: 'Production'         
           package: .
