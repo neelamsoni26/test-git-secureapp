@@ -1,8 +1,8 @@
 {
-  "name": "[parameters('test-github-Appservice')]",
+  "name": "test-github-Appservice",
   "type": "Microsoft.Web/sites",
   "apiVersion": "2021-02-01",
-  "location": "[parameters('Central US')]",
+  "location": "Central US",
   "properties": {
     "siteConfig": {
       "appSettings": [
@@ -19,10 +19,10 @@
       "type": "Extensions",
       "apiVersion": "2021-02-01",
       "dependsOn": [
-        "[concat('Microsoft.Web/sites/', parameters('test-github-Appservic'))]"
+        "[concat('Microsoft.Web/sites/', 'test-github-Appservic')]"
       ],
       "properties": {
-        "packageUri": "[parameters('release.zip')]"
+        "packageUri": "release.zip"
       }
     }
   ]
