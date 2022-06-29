@@ -8,22 +8,9 @@
       "appSettings": [
         {
           "name": "WEBSITE_RUN_FROM_PACKAGE",
-          "value": "1"
+          "value": "release.zip"
         }
       ]
     }
-  },
-  "resources": [
-    {
-      "name": "ZipDeploy",
-      "type": "Extensions",
-      "apiVersion": "2021-02-01",
-      "dependsOn": [
-        "[concat('Microsoft.Web/sites/', 'test-github-Appservic')]"
-      ],
-      "properties": {
-        "packageUri": "release.zip"
-      }
-    }
-  ]
+  }
 }
