@@ -1,25 +1,18 @@
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - "testGIUHUB.yml"
-      - "azuredeploy.json"
-
-name: Infrastructure
-
+on: [push]
+name: Azure ARM
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Login to Azure
-        uses: azure/login@v1
+    build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
+
+        # Checkout code
+      - uses: actions/checkout@main
+
+        # Log into Azure
+      - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Checkout Sourcecode
-        uses: actions/checkout@master
-
+          
       - name: Deploy ARM Template
         uses: whiteducksoftware/azure-arm-action-js@v1
         with:
