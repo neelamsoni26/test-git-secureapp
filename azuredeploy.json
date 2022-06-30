@@ -18,7 +18,7 @@
       "packageUri": {
         "type": "string",
         "metadata": {
-          "description": "The zip content url."
+          "description": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip"
         }
       }
     },
@@ -29,7 +29,7 @@
         "apiVersion": "2021-02-01",
         "location": "[parameters('location')]",
         "properties": {
-          "packageUri": "[parameters('https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip')]"
+          "packageUri": "[parameters('packageUri')]"
         }        
       }
     ]
