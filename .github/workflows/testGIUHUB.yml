@@ -1,25 +1,30 @@
-on: [push]
-name: Azure ARM
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "testGIUHUB.yml"
+      - "azuredeploy.json"
+
+name: Infrastructure
+
 jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
-
-        # Checkout code
-      - uses: actions/checkout@main
-
-        # Log into Azure
-      - uses: azure/login@v1
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy ARM template
-      - name: Run ARM deploy
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: azuredeploy.json
+      - name: Checkout Sourcecode
+        uses: actions/checkout@master
 
-        # output containerName variable from template
-      - run: echo ${{ steps.deploy.outputs.containerName }}
+      - name: Deploy ARM Template
+        uses: whiteducksoftware/azure-arm-action-js@v1
+        with:
+          resourceGroupName: test-github-rg
+          templateLocation: azuredeploy.json
+          parameters: |
+            appServicePlanName=test-github-Appservice 
+            webAppName=StaticWebApp
