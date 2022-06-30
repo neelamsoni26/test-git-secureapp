@@ -1,75 +1,13 @@
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "subscriptionId": {
-            "type": "string"
-        },
-        "name": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "hostingPlanName": {
-            "type": "string"
-        },
-        "serverFarmResourceGroup": {
-            "type": "string"
-        },
-        "alwaysOn": {
-            "type": "bool"
-        },
-        "currentStack": {
-            "type": "string"
-        },
-        "phpVersion": {
-            "type": "string"
-        },
-        "nodeVersion": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('name')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[parameters('location')]",
-            "tags": null,
-            "properties": {
-                "name": "[parameters('name')]",
-                "siteConfig": {
-                    "appSettings": [
-                        {
-                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                            "value": "[parameters('nodeVersion')]"
-                        }
-                    ],
-                    "metadata": [
-                        {
-                            "name": "CURRENT_STACK",
-                            "value": "[parameters('currentStack')]"
-                        }
-                    ],
-                    "phpVersion": "[parameters('phpVersion')]",
-                    "nodeVersion": "[parameters('nodeVersion')]",
-                    "alwaysOn": "[parameters('alwaysOn')]"
-                },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": true
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/extensions",
-            "name": "[concat(parameters('name'), '\/zipdeploy')]",
-            "apiVersion": "2020-09-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('name'))]"
-            ],
-            "properties": {
-                "packageUri": "https://github.com/JasonFreeberg/RunFromPackage-ARM-template/raw/main/flat-zip-app.zip"
-            }
-        }
-    ]
-}
+"resources": [
+  {
+    "apiVersion": "2019-08-01",
+    "type": "extensions",
+    "name": "zipdeploy",
+    "dependsOn": [
+      "[resourceId('Microsoft.Web/sites', variables('test-github-Appservice'))]"
+    ],
+    "properties": {
+      "packageUri": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip"
+    }
+  }
+]
