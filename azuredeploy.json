@@ -1,16 +1,61 @@
 {
-  "name": "test-github-Appservice",
-  "type": "Microsoft.Web/sites",
-  "apiVersion": "2021-02-01",
-  "location": "Central US",
-  "properties": {
-    "siteConfig": {
-      "appSettings": [
-        {
-          "name": "WEBSITE_RUN_FROM_PACKAGE",
-          "value": "release.zip"
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "serverFarmResourceGroup": {
+            "type": "string"
+        },
+        "alwaysOn": {
+            "type": "bool"
+        },
+        "currentStack": {
+            "type": "string"
+        },
+        "phpVersion": {
+            "type": "string"
+        },
+        "nodeVersion": {
+            "type": "string"
         }
-      ]
-    }
-  }
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-11-01",
+            "name": "test-github-Appservice",
+            "type": "Microsoft.Web/sites",
+            "location": "Central US",
+            "tags": null,
+            "properties": {
+                "name": "test-github-Appservice",
+                "siteConfig": {
+                    "phpVersion": "7.4"
+                },
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "clientAffinityEnabled": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/extensions",
+            "name": "[concat(test-github-Appservice, '\/zipdeploy')]",
+            "apiVersion": "2020-09-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', test-github-Appservice)]"
+            ],
+            "properties": {
+                "packageUri": "release.zip"
+            }
+        }
+    ]
 }
