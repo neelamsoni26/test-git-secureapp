@@ -1,5 +1,5 @@
         {
-          "name": "[concat(parameters('siteName'), '/MSDeploy')]",
+          "name": "[concat(test-github-appservice, '/MSDeploy')]",
           "type": "Microsoft.Web/sites/extensions",
           "properties": {
             "packageUri": "release.zip"
