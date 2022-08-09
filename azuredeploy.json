@@ -1,8 +1,5 @@
         {
           "name": "[concat(parameters('siteName'), '/MSDeploy')]",
           "type": "Microsoft.Web/sites/extensions",
-          "apiVersion": "2015-08-01",
-          "properties": {
-            "packageUri": "release.zip"
-          }
+          "apiVersion": "2015-08-01"
         }
