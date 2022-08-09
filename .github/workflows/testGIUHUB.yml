@@ -19,5 +19,5 @@ jobs:
           resourceGroupName: test-github-rg
           templateLocation: azuredeploy.json
           parameters: |
-            appServicePlanName=test-github-Appservice 
-            webAppName=StaticWebApp
+            appServicePlanName=test-git-appserviceplan 
+            webAppName=test-git-appservice
