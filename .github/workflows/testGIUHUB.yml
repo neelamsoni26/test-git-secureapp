@@ -16,7 +16,7 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: https://github.com/neelamsoni26/test-git-secureapp/blob/main/azuredeploy.json
+          template: azuredeploy.json
           parameters: storageAccountType=Standard_LRS
 
       - run: echo ${{ steps.deploy.outputs.containerName }}
