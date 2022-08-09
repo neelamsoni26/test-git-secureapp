@@ -1,4 +1,4 @@
-resource: [
+
   {
     "apiVersion": "2019-08-01",
     "type": "extensions",
@@ -10,4 +10,3 @@ resource: [
       "packageUri": "release.zip"
     }
   }
-]
