@@ -1,10 +1,7 @@
- {
-           "name": "MSDeploy",
-           "type": "Extensions",
-           "dependsOn": [
-             "[concat('Microsoft.Web/Sites/', test-github-appservice)]",
-           ],
-           "properties": {
-             "packageUri": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip",  
-           }
- }
+        {
+          "name": "[concat(parameters('siteName'), '/MSDeploy')]",
+          "type": "Microsoft.Web/sites/extensions",
+          "properties": {
+            "packageUri": "release.zip"
+          }
+        }
