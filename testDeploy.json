@@ -7,7 +7,7 @@
           "type": "Microsoft.Web/sites/extensions",
           "apiVersion": "2015-08-01",
           "properties": {
-            "packageUri": "release.zip"
+            "packageUri": "flat-zip-app.zip.zip"
           }
         }
         
