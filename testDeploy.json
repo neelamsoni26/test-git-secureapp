@@ -2,16 +2,14 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
-        {
-            "type": "Microsoft.Web/sites/extensions",
-            "name": "[concat('test-github-appservice', '\/zipdeploy')]",
-            "apiVersion": "2020-09-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', 'test-github-appservice')]"
-            ],
-            "properties": {
-                "packageUri": "release.zip"
-            }
+        {          
+          "name": "[concat(parameters('test-github-appservice'), '/ZipDeploy')]",
+          "type": "Microsoft.Web/sites/extensions",
+          "apiVersion": "2015-08-01",
+          "properties": {
+            "packageUri": "release.zip"
+          }
+        }
         }
     ]
 }
