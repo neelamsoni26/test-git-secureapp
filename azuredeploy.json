@@ -1,11 +1,10 @@
 {
-           "apiVersion": "2014-06-01",
-           "name": "MSDeploy",
-           "type": "Extensions",
-           "dependsOn": [
-             "[concat('Microsoft.Web/Sites/', test-github-appservice)]",
-           ],
-           "properties": {
-             "packageUri": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip",  
-           }
- }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.5.6.12127",
+      "templateHash": "7663654158564431055"
+    }
+  }
