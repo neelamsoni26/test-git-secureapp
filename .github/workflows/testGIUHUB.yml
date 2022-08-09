@@ -16,5 +16,5 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
-          template: https://github.com/neelamsoni26/test-git-secureapp/blob/main/azuredeploy.json
+          template: azuredeploy.json
           parameters: siteName=test-github-appservice
