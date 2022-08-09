@@ -4,10 +4,10 @@
     "resources": [
         {
             "type": "Microsoft.Web/sites/extensions",
-            "name": "[concat(test-github-appservice, '\/zipdeploy')]",
+            "name": "[concat('test-github-appservice', '\/zipdeploy')]",
             "apiVersion": "2020-09-01",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', test-github-appservice)]"
+                "[resourceId('Microsoft.Web/sites', 'test-github-appservice')]"
             ],
             "properties": {
                 "packageUri": "release.zip"
