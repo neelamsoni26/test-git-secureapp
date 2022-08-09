@@ -1,36 +1,8 @@
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",    
-    "parameters": {
-      "functionAppName": {
-        "type": "string",
-        "metadata": {
-          "description": "test-github-funcapp"
+        {
+          "name": "[concat(parameters('siteName'), '/MSDeploy')]",
+          "type": "Microsoft.Web/sites/extensions",
+          "apiVersion": "2015-08-01",
+          "properties": {
+            "packageUri": "release.zip"
+          }
         }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "The location into which the resources should be deployed."
-        }
-      },
-      "packageUri": {
-        "type": "string",
-        "metadata": {
-          "description": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip"
-        }
-      }
-    },
-    "resources": [
-      {
-        "name": "[concat(parameters('test-github-funcapp'), '/ZipDeploy')]",
-        "type": "Microsoft.Web/sites/extensions",
-        "apiVersion": "2021-02-01",
-        "location": "[parameters('location')]",
-        "properties": {
-          "packageUri": "[parameters('packageUri')]"
-        }        
-      }
-    ]
-  }
