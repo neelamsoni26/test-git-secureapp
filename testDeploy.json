@@ -1,0 +1,11 @@
+ {
+           "apiVersion": "2014-06-01",
+           "name": "MSDeploy",
+           "type": "Extensions",
+           "dependsOn": [
+             "[concat('Microsoft.Web/Sites/', test-github-appservice)]",
+           ],
+           "properties": {
+             "packageUri": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/release.zip",  
+           }
+ }
