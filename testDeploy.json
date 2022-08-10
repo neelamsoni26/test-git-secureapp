@@ -7,7 +7,7 @@
           "type": "Microsoft.Web/sites/extensions",
           "apiVersion": "2015-08-01",
           "properties": {
-            "packageUri": "https://github.com/neelamsoni26/test-git-secureapp/blob/main/flat-zip-app.zip"
+            "packageUri": "release.zip"
           }
         }
         
