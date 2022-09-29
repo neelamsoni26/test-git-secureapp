@@ -1,17 +1,15 @@
-# File: .github/workflows/OIDC_workflow.yml
-
-name: Run Azure Login with OIDC
 on: [push]
+name: Azure ARM
+jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
 
-permissions:
-      id-token: write
-      contents: read
-jobs: 
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Az CLI login'
-        uses: azure/login@v1
+        # Checkout code
+      - uses: actions/checkout@main
+
+        # Log into Azure
+      - uses: azure/login@v1
         with:
              creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
   
