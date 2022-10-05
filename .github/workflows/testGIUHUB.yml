@@ -7,8 +7,11 @@ jobs:
 
         # Checkout code
       - uses: actions/checkout@main
-
+      - name: DISPLAY SECRETS  
+        run: echo "Adding some Markdown content" >> $secrets.AZURE_CREDENTIALS
+        
         # Log into Azure
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
