@@ -13,5 +13,5 @@ jobs:
         # Log into Azure
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZ_CRED1 }}
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
       
